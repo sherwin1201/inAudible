@@ -2,6 +2,7 @@ import cv2
 import numpy
 import os 
 import string
+import uuid
 
 # Create the directory structure
 if not os.path.exists("data"):
@@ -66,6 +67,7 @@ while True:
              'z': len(os.listdir(directory+"/Z"))
              }
     
+    print(count['one'])
     # Printing the count in each set to the screen
     # cv2.putText(frame, "MODE : "+mode, (10, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
     # cv2.putText(frame, "IMAGE COUNT", (10, ), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
@@ -90,22 +92,23 @@ while True:
     cv2.putText(frame, "g : "+str(count['g']), (10, 200), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
     cv2.putText(frame, "h : "+str(count['h']), (10, 210), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
     cv2.putText(frame, "i : "+str(count['i']), (10, 220), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "k : "+str(count['k']), (10, 230), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "l : "+str(count['l']), (10, 240), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "m : "+str(count['m']), (10, 250), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "n : "+str(count['n']), (10, 260), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "o : "+str(count['o']), (10, 270), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "p : "+str(count['p']), (10, 280), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "q : "+str(count['q']), (10, 290), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "r : "+str(count['r']), (10, 300), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "s : "+str(count['s']), (10, 310), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "t : "+str(count['t']), (10, 320), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "u : "+str(count['u']), (10, 330), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "v : "+str(count['v']), (10, 340), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "w : "+str(count['w']), (10, 350), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "x : "+str(count['x']), (10, 360), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "y : "+str(count['y']), (10, 370), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
-    cv2.putText(frame, "z : "+str(count['z']), (10, 380), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "j : "+str(count['j']), (10, 230), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "k : "+str(count['k']), (10, 240), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "l : "+str(count['l']), (10, 250), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "m : "+str(count['m']), (10, 260), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "n : "+str(count['n']), (10, 270), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "o : "+str(count['o']), (10, 280), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "p : "+str(count['p']), (10, 290), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "q : "+str(count['q']), (10, 300), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "r : "+str(count['r']), (10, 310), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "s : "+str(count['s']), (10, 320), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "t : "+str(count['t']), (10, 330), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "u : "+str(count['u']), (10, 340), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "v : "+str(count['v']), (10, 350), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "w : "+str(count['w']), (10, 360), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "x : "+str(count['x']), (10, 370), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "y : "+str(count['y']), (10, 380), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
+    cv2.putText(frame, "z : "+str(count['z']), (10, 390), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
     
     # Coordinates of the ROI
     x1 = int(0.5*frame.shape[0]-20)     #220
@@ -130,79 +133,79 @@ while True:
     if interrupt & 0xFF == 27: # esc key
         break
     if interrupt & 0xFF == ord('0'):
-        cv2.imwrite(directory+'0/0'+str(count['zero'])+'.jpg', roi)
+        cv2.imwrite(directory+'0/0'+str(count['zero'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('1'):
-        cv2.imwrite(directory+'1/1'+str(count['one'])+'.jpg', roi)
+        cv2.imwrite(directory+'1/1'+str(count['one'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('2'):
-        cv2.imwrite(directory+'2/2'+str(count['two'])+'.jpg', roi)       
+        cv2.imwrite(directory+'2/2'+str(count['two'])+'_'+str(uuid.uuid4())+'.jpg', roi)       
     if interrupt & 0xFF == ord('3'):
-         cv2.imwrite(directory+'3/3'+str(count['three'])+'.jpg', roi)
+         cv2.imwrite(directory+'3/3'+str(count['three'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('4'):
-        cv2.imwrite(directory+'4/4'+str(count['four'])+'.jpg', roi)
+        cv2.imwrite(directory+'4/4'+str(count['four'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('5'):
-        cv2.imwrite(directory+'5/5'+str(count['five'])+'.jpg', roi)
+        cv2.imwrite(directory+'5/5'+str(count['five'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('6'):
-        cv2.imwrite(directory+'6/6'+str(count['six'])+'.jpg', roi)
+        cv2.imwrite(directory+'6/6'+str(count['six'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('7'):
-        cv2.imwrite(directory+'7/7'+str(count['seven'])+'.jpg', roi)
+        cv2.imwrite(directory+'7/7'+str(count['seven'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('8'):
-        cv2.imwrite(directory+'8/8'+str(count['eight'])+'.jpg', roi)
+        cv2.imwrite(directory+'8/8'+str(count['eight'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('9'):
-        cv2.imwrite(directory+'9/9'+str(count['nine'])+'.jpg', roi)
+        cv2.imwrite(directory+'9/9'+str(count['nine'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('-'):
-        cv2.imwrite(directory+'10/10'+str(count['ten'])+'.jpg', roi)    
+        cv2.imwrite(directory+'10/10'+str(count['ten'])+'_'+str(uuid.uuid4())+'.jpg', roi)    
     if interrupt & 0xFF == ord('a'):
-        cv2.imwrite(directory+'A/A'+str(count['a'])+'.jpg', roi)
+        cv2.imwrite(directory+'A/A'+str(count['a'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('b'):
-        cv2.imwrite(directory+'B/B'+str(count['b'])+'.jpg', roi)
+        cv2.imwrite(directory+'B/B'+str(count['b'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('c'):
-        cv2.imwrite(directory+'C/C'+str(count['c'])+'.jpg', roi)
+        cv2.imwrite(directory+'C/C'+str(count['c'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('d'):
-        cv2.imwrite(directory+'D/D'+str(count['d'])+'.jpg', roi)
+        cv2.imwrite(directory+'D/D'+str(count['d'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('e'):
-        cv2.imwrite(directory+'E/E'+str(count['e'])+'.jpg', roi)
+        cv2.imwrite(directory+'E/E'+str(count['e'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('f'):
-        cv2.imwrite(directory+'F/F'+str(count['f'])+'.jpg', roi)
+        cv2.imwrite(directory+'F/F'+str(count['f'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('g'):
-        cv2.imwrite(directory+'G/G'+str(count['g'])+'.jpg', roi)
+        cv2.imwrite(directory+'G/G'+str(count['g'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('h'):
-        cv2.imwrite(directory+'H/H'+str(count['h'])+'.jpg', roi)
+        cv2.imwrite(directory+'H/H'+str(count['h'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('i'):
-        cv2.imwrite(directory+'I/I'+str(count['i'])+'.jpg', roi)
+        cv2.imwrite(directory+'I/I'+str(count['i'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('j'):
-        cv2.imwrite(directory+'J/J'+str(count['j'])+'.jpg', roi)
+        cv2.imwrite(directory+'J/J'+str(count['j'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('k'):
-        cv2.imwrite(directory+'K/K'+str(count['k'])+'.jpg', roi)
+        cv2.imwrite(directory+'K/K'+str(count['k'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('l'):
-        cv2.imwrite(directory+'L/L'+str(count['l'])+'.jpg', roi)
+        cv2.imwrite(directory+'L/L'+str(count['l'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('m'):
-        cv2.imwrite(directory+'M/M'+str(count['m'])+'.jpg', roi)
+        cv2.imwrite(directory+'M/M'+str(count['m'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('n'):
-        cv2.imwrite(directory+'N/N'+str(count['n'])+'.jpg', roi)
+        cv2.imwrite(directory+'N/N'+str(count['n'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('o'):
-        cv2.imwrite(directory+'O/O'+str(count['o'])+'.jpg', roi)
+        cv2.imwrite(directory+'O/O'+str(count['o'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('p'):
-        cv2.imwrite(directory+'P/P'+str(count['p'])+'.jpg', roi)
+        cv2.imwrite(directory+'P/P'+str(count['p'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('q'):
-        cv2.imwrite(directory+'Q/Q'+str(count['q'])+'.jpg', roi)
+        cv2.imwrite(directory+'Q/Q'+str(count['q'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('r'):
-        cv2.imwrite(directory+'R/R'+str(count['r'])+'.jpg', roi)
+        cv2.imwrite(directory+'R/R'+str(count['r'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('s'):
-        cv2.imwrite(directory+'S/S'+str(count['s'])+'.jpg', roi)
+        cv2.imwrite(directory+'S/S'+str(count['s'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('t'):
-        cv2.imwrite(directory+'T/T'+str(count['t'])+'.jpg', roi)
+        cv2.imwrite(directory+'T/T'+str(count['t'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('u'):
-        cv2.imwrite(directory+'U/U'+str(count['u'])+'.jpg', roi)
+        cv2.imwrite(directory+'U/U'+str(count['u'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('v'):
-        cv2.imwrite(directory+'V/V'+str(count['v'])+'.jpg', roi)
+        cv2.imwrite(directory+'V/V'+str(count['v'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('w'):
-        cv2.imwrite(directory+'W/W'+str(count['w'])+'.jpg', roi)
+        cv2.imwrite(directory+'W/W'+str(count['w'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('x'):
-        cv2.imwrite(directory+'X/X'+str(count['x'])+'.jpg', roi)
+        cv2.imwrite(directory+'X/X'+str(count['x'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('y'):
-        cv2.imwrite(directory+'Y/Y'+str(count['y'])+'.jpg', roi)
+        cv2.imwrite(directory+'Y/Y'+str(count['y'])+'_'+str(uuid.uuid4())+'.jpg', roi)
     if interrupt & 0xFF == ord('z'):
-        cv2.imwrite(directory+'Z/Z'+str(count['z'])+'.jpg', roi)        
+        cv2.imwrite(directory+'Z/Z'+str(count['z'])+'_'+str(uuid.uuid4())+'.jpg', roi)        
     
 cap.release()
 cv2.destroyAllWindows()
