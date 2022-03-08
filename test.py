@@ -7,10 +7,10 @@ import os
 import cv2
 from numpy.core.numeric import NaN
 
-SIZE = 128
+SIZE = 256
 TEST_DIR = "dataset/asl_alphabet_test/asl_alphabet_test"
 
-model = load_model("models/test_model_3")
+model = load_model("models/test_model_4")
 train_gen = ImageDataGenerator(rescale=1.0/255, 
                                 shear_range=0.2, 
                                 zoom_range=0.2, 
@@ -26,7 +26,7 @@ train_gen = ImageDataGenerator(rescale=1.0/255,
 
 test_gen = ImageDataGenerator(rescale=1.0/255)
 
-test_set = test_gen.flow_from_directory('dataset/asl_alphabet_test/', 
+test_set = test_gen.flow_from_directory('dataset/test/A', 
                                             target_size=(SIZE,SIZE),
                                             batch_size=10,
                                             color_mode='grayscale',
@@ -51,14 +51,14 @@ for i in range(29):
     if i == 28:
         labels[i] = 'space'
 
-input = cv2.imread("dataset/asl_alphabet_test/asl_alphabet_test/X_test.jpg", 0)
+input = cv2.imread("dataset/test/A/A6_e57a9973-226c-41bc-8473-2dbb317b6fd0.jpg", 0)
 test_image = cv2.resize(input, (SIZE,SIZE))
 result = model.predict_generator(test_image.reshape(1, SIZE, SIZE, 1))
 y_classes = result.argmax(axis=-1)
 text = "Predicted sign: "+labels[y_classes[0]] 
 result = cv2.resize(input, (SIZE*2, SIZE*2), interpolation = cv2.INTER_AREA)
-result = cv2.rectangle(result, (0,220),(result.shape[0],result.shape[0]), (255, 0, 0), -1 )
-result = cv2.putText(result, text, (10,240), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 2, cv2.LINE_AA)
+result = cv2.rectangle(result, (0,420),(result.shape[0],result.shape[0]), (255, 0, 0), -1 )
+result = cv2.putText(result, text, (10,480), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 2, cv2.LINE_AA)
 cv2.imshow('Predicted Image', result)
 cv2.waitKey(0)
 print(labels[y_classes[0]])

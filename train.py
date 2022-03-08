@@ -2,28 +2,28 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 
-SIZE = 128
+SIZE = 256
+DATASET_DIRECTORY = "dataset"
+CATEGORIES = 37
+BATCH_SIZE = 16
+
 train_gen = ImageDataGenerator(rescale=1.0/255, 
                                 shear_range=0.2, 
                                 zoom_range=0.2, 
-                                horizontal_flip=True,
-                                validation_split=0.2)
-test_gen = ImageDataGenerator(rescale=1.0/255,
-                                validation_split=0.2)
+                                horizontal_flip=True,)
+test_gen = ImageDataGenerator(rescale=1.0/255,)
 
-training_set = train_gen.flow_from_directory('dataset/asl_alphabet_train/asl_alphabet_train', 
-                                            batch_size=32,
+training_set = train_gen.flow_from_directory(DATASET_DIRECTORY+'/train', 
+                                            batch_size=BATCH_SIZE,
                                             target_size=(SIZE,SIZE),
                                             color_mode='grayscale',
-                                            class_mode='categorical',
-                                            subset='training')
+                                            class_mode='categorical',)
 
-validation_set = test_gen.flow_from_directory('dataset/asl_alphabet_train/asl_alphabet_train', 
+validation_set = test_gen.flow_from_directory(DATASET_DIRECTORY+'/test', 
                                             target_size=(SIZE,SIZE),
-                                            batch_size=32,
+                                            batch_size=BATCH_SIZE,
                                             color_mode='grayscale',
-                                            class_mode='categorical',
-                                            subset='validation')                                            
+                                            class_mode='categorical',)                                            
 
 def build_model():
     model = Sequential()
@@ -39,7 +39,7 @@ def build_model():
     model.add(Dense(units=96, activation='relu'))
     model.add(Dropout(0.40))
     model.add(Dense(units=64, activation='relu'))
-    model.add(Dense(units=29, activation='softmax'))
+    model.add(Dense(units=CATEGORIES, activation='softmax'))
     model.compile(loss="categorical_crossentropy",optimizer="adam",metrics=['accuracy'])
     return model
 
@@ -49,7 +49,7 @@ model.fit_generator(training_set,
                     validation_data=validation_set,
                     steps_per_epoch = training_set.n//training_set.batch_size,
                     validation_steps = validation_set.n//validation_set.batch_size,
-                    epochs=5)
+                    epochs=10)
 
 model.summary()
-model.save('models/test_model_3')
+model.save('models/test_model_4')

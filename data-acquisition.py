@@ -126,7 +126,7 @@ while True:
     # Extracting the ROI
     # roi = frame[10:410, 220:520]
     roi = frame[y1:y2, x1:x2]
-    roi = preprocess(roi)
+    # roi = preprocess(roi)
     
     cv2.imshow("Frame", frame)
     cv2.imshow("test", roi)
