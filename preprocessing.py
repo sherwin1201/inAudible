@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import os
 
 def preprocess(frame):
     grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -15,3 +16,14 @@ def preprocess(frame):
     resized = cv2.resize(res, (256,256), interpolation = cv2.INTER_AREA)
 
     return resized
+
+if not os.path.exists('preprocessed'):
+    os.makedirs('preprocessed')
+
+for i in os.listdir("data/"):
+    for j in os.listdir("data/"+i):
+        img = cv2.imread("data/"+i+"/"+j)
+        preprocessed_img = preprocess(img)
+        if not os.path.exists('preprocessed/'+i):
+            os.makedirs("preprocessed/"+i)
+        cv2.imwrite("preprocessed/"+i+"/"+j, preprocessed_img)

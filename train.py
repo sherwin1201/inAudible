@@ -1,11 +1,12 @@
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+from PIL import ImageFile
 
 SIZE = 256
 DATASET_DIRECTORY = "dataset"
 CATEGORIES = 37
-BATCH_SIZE = 16
+BATCH_SIZE = 32
 
 train_gen = ImageDataGenerator(rescale=1.0/255, 
                                 shear_range=0.2, 
@@ -17,13 +18,15 @@ training_set = train_gen.flow_from_directory(DATASET_DIRECTORY+'/train',
                                             batch_size=BATCH_SIZE,
                                             target_size=(SIZE,SIZE),
                                             color_mode='grayscale',
-                                            class_mode='categorical',)
+                                            class_mode='categorical',
+                                            shuffle=True)
 
 validation_set = test_gen.flow_from_directory(DATASET_DIRECTORY+'/test', 
                                             target_size=(SIZE,SIZE),
                                             batch_size=BATCH_SIZE,
                                             color_mode='grayscale',
-                                            class_mode='categorical',)                                            
+                                            class_mode='categorical',
+                                            shuffle=True)                                            
 
 def build_model():
     model = Sequential()
@@ -44,6 +47,9 @@ def build_model():
     return model
 
 
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 model = build_model()
 model.fit_generator(training_set,
                     validation_data=validation_set,
@@ -52,4 +58,4 @@ model.fit_generator(training_set,
                     epochs=10)
 
 model.summary()
-model.save('models/test_model_4')
+model.save('models/test_model_5')
